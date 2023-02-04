@@ -23,6 +23,16 @@ export async function createUser({email, password, displayName, profileImage}) {
 }
 
 
+export async function getUserById(userId) {
+  const [result] = await pool.query(
+    `SELECT * FROM users WHERE id = ?`,
+    [userId]
+  );
+
+  return result[0];
+}
+
+
 export async function getUserWithEmail(email) {
   const [result] = await pool.query(
     `SELECT * FROM users WHERE email = ?`,
