@@ -1,0 +1,14 @@
+
+footer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 1.5rem;
+    font-size: 16px;
+    color: whitesmoke;
+    letter-spacing: 2px;
+  }
+  
+  footer::before {
+    content: "Tony Kieling — 2023";
+  }

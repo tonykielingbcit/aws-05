@@ -1,0 +1,54 @@
+.cont-signup {
+    margin: auto;
+    margin-top: 2rem;
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+}
+
+.cont-signup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    width: 50%;
+}
+
+.cont-signup form input {
+    border: transparent;
+    width: 90%;
+    margin: 8px 0;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.cont-signup form button {
+    width: 80%;
+    border-radius: 7px;
+    padding: 0.5rem;
+    border: transparent;
+    background-color: lightgreen;
+    color: blue;
+    font-size: 110%;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+.cont-signup form button:hover {
+    background-color: lightblue;
+    color: darkgreen;
+    box-shadow: 0 0 1px 1px lightgreen;
+}
+
+.signup-message {
+    margin: 1rem 0;
+    width: 80%;
+    padding: 1rem;
+    background-color: lightcoral;
+    color: darkred;
+    border-radius: 8px;
+    text-align: center;
+}

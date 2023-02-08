@@ -48,7 +48,8 @@ app.post("/api/login", async (req, res) => {
         const userInfo = {
             id: user.id,
             name: user.displayName,
-            image: user.profileImage
+            image: user.profileImage,
+            email: user.email
         };
         const token = jwt.generateToken(userInfo);
 
@@ -84,9 +85,23 @@ app.post("/api/signup", async (req, res) => {
 
     
         const hashedPassword = await bcrypt.hash(password, 13);
-        database.createUser({email, password: hashedPassword, displayName: name, profileImage: picture});
-    
-        return res.send({ message: "POST signup all good!" })
+        const userCreated = await database.createUser({email, password: hashedPassword, displayName: name, profileImage: picture});
+
+        if (userCreated.affectedRows < 1)
+            throw({ message: "DB Error on creating user"});
+
+        const userInfo = {
+            id: userCreated.insertId,
+            name: name,
+            image: picture,
+            email: email
+        };
+        const token = jwt.generateToken(userInfo);
+
+        return res.send({ 
+            message: "POST Signup All GOOD. User got logged in!",
+            token
+        });
 
     } catch(error) {
         console.error(`###ERROR on SignUp: ${error.message || error}`);
@@ -150,6 +165,6 @@ app.use((req, res) => res.json({message: "no route has been found"}));
 
 
 
-const port = process.env.PORT || 8888;
+const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server running at ${port} port`));
 

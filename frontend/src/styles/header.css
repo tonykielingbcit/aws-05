@@ -1,0 +1,27 @@
+
+header {
+    background-color: gray;
+}
+
+header nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+header .menu-item {
+    padding: 0.5rem 1rem;
+    text-decoration: inherit;
+}
+header .menu-item:hover {
+    color: darkred;
+    background-color: lightgray;
+    border-radius: 8px;
+}
+.cont-part1, .cont-part2 {
+    margin: 0 1rem;
+    display: flex;
+}
