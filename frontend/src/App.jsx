@@ -10,16 +10,16 @@ import {
 } from "../helpers/handleLocalStorage.js";
 
 export default function App() {
-  let [token, setToken] = useState("");
-  let [user, setUser] = useState(null);
-  user = token ? jwtDecode(token) : null;
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState("");
 
   useEffect(() => {
-    const token = getToken();
-    if (token) {
-      setToken(token);
+    const temToken = getToken();
+    if (temToken) {
+      setToken(temToken);
+      setUser(jwtDecode(temToken));
     }
-  }, []);
+  }, [token]);
 
   function setNewToken(token, action = null) {
     // logout is calling

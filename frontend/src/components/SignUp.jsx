@@ -33,9 +33,7 @@ export default () => {
       return;
     }
 
-    const token = result.token;
-
-    setNewToken(token);
+    setNewToken(result.token);
     navigate("/profile");
   };
 

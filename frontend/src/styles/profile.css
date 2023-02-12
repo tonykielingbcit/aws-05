@@ -1,0 +1,84 @@
+.profile-no-edit {
+    color: lightslategray;
+    background-color: lightgray;
+}
+
+.profile-yes-edit {
+    color: black;
+    background-color: whitesmoke;
+    font-weight: bold;
+}
+
+.buttons {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.two-buttons {
+    width: 100%;
+}
+
+#edit-bt {
+    background-color: blue;
+    color: whitesmoke;
+    width: 75%;
+}
+
+#edit-bt:hover {
+    background-color: limegreen;
+    color: blue;
+    box-shadow: 0 0 2px 2px limegreen;
+}
+
+#save-bt {
+    background-color: gold;
+    color: green;
+    width: 50%;
+}
+
+#save-bt:hover {
+    background-color: limegreen;
+    color: blue;
+    box-shadow: 0 0 2px 2px limegreen;
+}
+
+#cancel-bt {
+    background-color: lightcoral;
+    color: brown;
+    width: 50%;
+}
+
+#cancel-bt:hover {
+    /* border: 5px solid brown; */
+    background-color: gray;
+    color: wheat;
+    box-shadow: 0 0 2px 2px gray;
+}
+
+.msg-none {
+    display: none;
+}
+
+.msg-success {
+    display: block;
+    margin: 1rem 0;
+    width: 80%;
+    padding: 1rem;
+    background-color: lightgreen;
+    color: darkblue;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.msg-fail {
+    display: block;
+    margin: 1rem 0;
+    width: 80%;
+    padding: 1rem;
+    background-color: lightcoral;
+    color: maroon;
+    border-radius: 8px;
+    text-align: center;
+}

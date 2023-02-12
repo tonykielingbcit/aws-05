@@ -92,7 +92,7 @@ app.post("/api/signup", async (req, res) => {
 
         const userInfo = {
             id: userCreated.insertId,
-            name: name,
+            name,
             image: picture,
             email: email
         };
@@ -111,11 +111,13 @@ app.post("/api/signup", async (req, res) => {
 
 
 // modify displayName route
-app.put("/api/users/:id/displayName", async (req, res) => {
+app.put("/api/users/:id/displayName", jwt.authorizeUser, async (req, res) => {
+    // console.log("req.body---- ", req.body)
+    // if (1) return res.json({error: "all goodddddd"})
     try {
         const userId = req.params.id;
         
-        const { newDisplayName } = req.body;
+        const { newDisplayName, email } = req.body;
         if (!newDisplayName)
             throw ({ 
                 code: 400,
@@ -126,7 +128,17 @@ app.put("/api/users/:id/displayName", async (req, res) => {
         const user = await database.updateUserDisplayName(userId, newDisplayName);
         const message = user.changedRows > 0 ? "Info updated" : "No changes applied";
 
-        return res.send({ message });
+        const userInfo = {
+            id: userId,
+            name: newDisplayName,
+            email
+        };
+        const token = jwt.generateToken(userInfo);
+
+        return res.send({ 
+            message,
+            token
+        });
 
     } catch(error) {
         console.error(`###ERROR on change displayName: ${error.message || error}`);
