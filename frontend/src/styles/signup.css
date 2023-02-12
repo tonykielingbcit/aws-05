@@ -7,7 +7,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 50%;
+    /* max-width: 50%; */
+    width: 80%;
 }
 
 .cont-signup form {
@@ -15,12 +16,12 @@
     flex-direction: column;
     align-items: center;
     margin: 1rem;
-    width: 50%;
+    width: 80%;
 }
 
 .cont-signup form input {
     border: transparent;
-    width: 90%;
+    width: 80%;
     margin: 8px 0;
     padding: 0.5rem;
     border-radius: 8px;
@@ -37,6 +38,7 @@
     font-weight: bold;
     margin: 1rem 0;
 }
+
 .cont-signup form button:hover {
     background-color: lightblue;
     color: darkgreen;
@@ -51,4 +53,20 @@
     color: darkred;
     border-radius: 8px;
     text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .cont-signup {
+        width: 50%;
+    }
+
+    form {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    form, .cont-signup {
+        width: 30%;
+    }
 }

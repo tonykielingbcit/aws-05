@@ -1,19 +1,16 @@
-import jwtDecode from "jwt-decode";
+/*
+    the token default name for this application is tokenUserSys
+*/
 
-const recordUser = token => {
-    window.localStorage.setItem("token", token);
-};
+const recordToken = token => window.localStorage.setItem("tokenUserSys", token);
 
-const getUser = token => {
-    const getToken = window.localStorage.getItem(token)
+const removeToken = () => window.localStorage.removeItem("tokenUserSys");
 
-    if (getToken) {
-        const decodeToken = jwtDecode(getToken);
-        return decodeToken;
-    }
-}
+const getToken = () => window.localStorage.getItem("tokenUserSys");
+
 
 export {
-    recordUser,
-    getUser
+    recordToken,
+    removeToken,
+    getToken
 };
