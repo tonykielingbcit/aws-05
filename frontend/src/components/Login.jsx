@@ -4,17 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthContext.js";
 
 export default () => {
+  const { user, setNewToken } = useContext(AuthContext);
   const [email, setEmail] = useState("tk@tk.ca");
   const [password, setPassword] = useState("passwd");
   const [message, setMessage] = useState("");
-  const { user, setNewToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     user && navigate("/profile");
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setMessage("");
     const result = await fetch("/api/login", {

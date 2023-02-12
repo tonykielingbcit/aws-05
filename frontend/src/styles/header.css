@@ -32,4 +32,12 @@ header .is-active {
 .cont-part1, .cont-part2 {
     margin: 0 1rem;
     display: flex;
+    justify-content: space-between;
+}
+
+.hello-user {
+    padding: 0.5rem 0;
+    margin-left: 2rem;
+    text-decoration: inherit;
+    color: lime;   
 }

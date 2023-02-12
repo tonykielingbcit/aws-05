@@ -1,4 +1,6 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef
+  // , useLayoutEffect 
+} from "react";
 import "../styles/signup.css";
 import "../styles/profile.css";
 import { AuthContext } from "../AuthContext/AuthContext.js";
@@ -17,6 +19,14 @@ export default () => {
   const nameRef = useRef(null);
   const navigate = useNavigate();
 
+  // useLayoutEffect(() => {
+  //   console.log("userrrr", user)
+  //   if (user) {
+  //     console.log("userrrrrrrrrrrrrrrrr,", user)
+  //     setDisplayName(user.name);
+  //   }
+  // }, []);
+
   useEffect(() => {
     // console.log("user in PoROFILE::: ", user);
     if (!user) {
@@ -28,7 +38,7 @@ export default () => {
   }, [user]);
 
   const handleSubmit = async (e) => {
-    console.log("data: ", displayName, user);
+    // console.log("data: ", displayName, user);
     e.preventDefault();
     setMessage("");
     const result = await fetch(`/api/users/${user.id}/displayName`, {
@@ -39,7 +49,6 @@ export default () => {
       },
       body: JSON.stringify({ newDisplayName: displayName, email: user.email }),
     }).then((res) => res.json());
-    // console.log("result:::::::::::::: ", result);
 
     if (result.error) {
       setMessage(result.error);
@@ -71,7 +80,7 @@ export default () => {
       <h2>Profile Page</h2>
       <form>
         <input
-          // type="email"
+          type="email"
           // value={email}
           value={user?.email}
           onChange={(e) => setEmail(e.target.value)}
@@ -82,6 +91,7 @@ export default () => {
         <input
           type="text"
           value={displayName || user?.name}
+          // value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
           placeholder="User Name"
           required

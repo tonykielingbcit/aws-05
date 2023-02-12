@@ -128,10 +128,13 @@ app.put("/api/users/:id/displayName", jwt.authorizeUser, async (req, res) => {
         const user = await database.updateUserDisplayName(userId, newDisplayName);
         const message = user.changedRows > 0 ? "Info updated" : "No changes applied";
 
+        const getUser = await database.getUserById(userId);
+        
         const userInfo = {
-            id: userId,
-            name: newDisplayName,
-            email
+            id: getUser.id,
+            name: getUser.displayName,
+            email: getUser.email,
+            image: getUser.profileImage
         };
         const token = jwt.generateToken(userInfo);
 

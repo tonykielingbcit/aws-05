@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 export default () => {
   const { user, setNewToken } = useContext(AuthContext);
-  const [email, setEmail] = useState("tk1@tk.ca");
-  const [displayName, setDisplayName] = useState("tk1");
-  const [password, setPassword] = useState("tk1");
+  const [email, setEmail] = useState("tk@tk.ca");
+  const [displayName, setDisplayName] = useState("tk");
+  const [password, setPassword] = useState("tk");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ export default () => {
   }, []);
 
   const handleSubmit = async (e) => {
-    console.log("data: ", email, password, displayName);
+    // console.log("data: ", email, password, displayName);
     e.preventDefault();
     setMessage("");
     const result = await fetch("/api/signup", {

@@ -2,19 +2,40 @@ import "../styles/header.css";
 import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.js";
-import jwtDecode from "jwt-decode";
 
 export default () => {
-  const { token } = useContext(AuthContext);
-  const user = token ? jwtDecode(token) : null;
+  const { user } = useContext(AuthContext);
   const currentLocation = useLocation().pathname;
 
   return (
     <header>
       <nav>
         <div className="cont-part1">
-          {user ? (
-            <>
+          {user 
+            ? 
+              <>
+                <NavLink
+                  to="/"
+                  className={`menu-item ${
+                    currentLocation === "/" ? "is-active" : ""
+                  }`}
+                >
+                  Home
+                </NavLink>
+
+
+                <NavLink
+                  to="/profile"
+                  className={`menu-item ${
+                    currentLocation === "/profile" ? "is-active" : ""
+                  }`}
+                  >
+                  Profile
+                </NavLink>
+
+                <span className="hello-user">Hi {user.name}</span>
+              </>
+            :
               <NavLink
                 to="/"
                 className={`menu-item ${
@@ -23,26 +44,8 @@ export default () => {
               >
                 Home
               </NavLink>
+          }
 
-              <NavLink
-                to="/profile"
-                className={`menu-item ${
-                  currentLocation === "/profile" ? "is-active" : ""
-                }`}
-              >
-                Profile
-              </NavLink>
-            </>
-          ) : (
-            <NavLink
-              to="/"
-              className={`menu-item ${
-                currentLocation === "/" ? "is-active" : ""
-              }`}
-            >
-              Home
-            </NavLink>
-          )}
         </div>
 
         <div className="cont-part2">
